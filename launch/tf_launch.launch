@@ -1,5 +1,5 @@
 <launch>
-    <param name="/use_sim_time" value="true"/>
+    <param name="use_sim_time" value="true"/>
     <node pkg="tf"
         type="static_transform_publisher"
         name="base_link_to_imu_broadcaster"
@@ -8,5 +8,6 @@
         type="static_transform_publisher"
         name="bl_to_gps_transform_broadcaster"
         args="0 0 0 0 0 0 base_link gps 100" />
-    <node pkg="tf_tree_publisher" type="drone_tf_broadcaster.py" name="drone_tf1" />
+    <node pkg="tf_tree_publisher" type="bl_to_odom_tf_broadcaster.py" name="tf_odom" />
+    <node pkg="tf_tree_publisher" type="bl_to_map_tf_broadcaster.py" name="tf_map" />
 </launch>
